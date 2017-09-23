@@ -1,28 +1,53 @@
-class Stack<T>(size: Int) {
+internal class Stack<T>(size: Int) {
 
     private var items: Array<Any?>
     private var index: Int
 
-    init {
+    internal init {
         this.items = arrayOfNulls<Any?>(size)
         this.index = 0
     }
 
-    fun isEmpty(): Boolean {
+    internal fun isEmpty(): Boolean {
         return if (this.index == 0) true else false
     }
 
-    fun isFull(): Boolean {
+    internal fun isFull(): Boolean {
         return if (this.index == this.items.size) true else false
     }
 
-//  fun peek(): T? {}
+    internal fun peek(): T? {
 
-//  fun pop(): T? {}
+        if (isEmpty()) {
+            throw Exception("Cannot pop from an empty stack!")
+        }
 
-//  fun push(item: T?) {}
+        return this.items[this.index - 1] as T?
+    }
 
-    fun size(): Int {
+    internal fun pop(): T? {
+
+        if (isEmpty()) {
+            throw Exception("Cannot pop from an empty stack!")
+        }
+
+        this.index -= 1
+        var item = this.items[this.index]
+        this.items[this.index] = null
+        return item as T?
+    }
+
+    internal fun push(item: T?): Unit {
+
+        if (isFull()) {
+            throw Exception("Cannot push into a full stack!")
+        }
+
+        this.items[this.index] = item
+        this.index += 1
+    }
+
+    internal fun size(): Int {
         return this.index
     }
 
