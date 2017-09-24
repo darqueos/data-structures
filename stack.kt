@@ -21,7 +21,7 @@ internal class Stack<T>(length: Int) {
     internal fun peek(): T? {
 
         if (this.isEmpty()) {
-            throw Exception("Cannot pop from an empty stack!")
+            throw Exception("Cannot peek at an empty stack!")
         }
 
         return this.items[this.index - 1] as T?
