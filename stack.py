@@ -5,10 +5,10 @@ class Stack:
         self.index = 0
 
     def empty(self):
-        return True if self.index == 0 else False
+        return self.index == 0
 
     def full(self):
-        return True if self.index == len(self.items) else False
+        return self.index == len(self.items)
 
     def peek(self):
 

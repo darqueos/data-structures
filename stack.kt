@@ -9,16 +9,16 @@ internal class Stack<T>(size: Int) {
     }
 
     internal fun isEmpty(): Boolean {
-        return if (this.index == 0) true else false
+        return this.index == 0
     }
 
     internal fun isFull(): Boolean {
-        return if (this.index == this.items.size) true else false
+        return this.index == this.items.size
     }
 
     internal fun peek(): T? {
 
-        if (isEmpty()) {
+        if (this.isEmpty()) {
             throw Exception("Cannot pop from an empty stack!")
         }
 
@@ -27,7 +27,7 @@ internal class Stack<T>(size: Int) {
 
     internal fun pop(): T? {
 
-        if (isEmpty()) {
+        if (this.isEmpty()) {
             throw Exception("Cannot pop from an empty stack!")
         }
 
@@ -39,7 +39,7 @@ internal class Stack<T>(size: Int) {
 
     internal fun push(item: T?): Unit {
 
-        if (isFull()) {
+        if (this.isFull()) {
             throw Exception("Cannot push into a full stack!")
         }
 
