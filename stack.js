@@ -24,7 +24,7 @@ class Stack {
         return this.items[this.index - 1];
     }
 
-    pop () {
+    pop() {
 
         if (this.isEmpty()) {
             throw new RangeError("Cannot pop from an empty stack!");
