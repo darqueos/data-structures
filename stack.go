@@ -1,54 +1,58 @@
 // 1.9
 
+package stack
+
+import "errors"
+
 type Stack struct {
-    Items []int;
-    Index int;
+	Items []int
+	Index int
 }
 
-func NewStack(length int) *Stack {
-    return &Stack{Items: [length]int, Index: 0}
+func NewStack(l int) *Stack {
+	return &Stack{Items: make([]int, l, l*2), Index: 0}
 }
 
 func (s *Stack) Empty() bool {
-    return s.Index == 0
+	return s.Index == 0
 }
 
 func (s *Stack) Full() bool {
-    return s.Index == len(s.Items)
+	return s.Index == len(s.Items)
 }
 
 func (s *Stack) Peek() (int, error) {
 
-    if s.Empty() {
-        return 0, errors.New("Cannot peek at an empty stack!")
-    }
+	if s.Empty() {
+		return 0, errors.New("Cannot peek at an empty stack!")
+	}
 
-    return s.Items[s.Index], nil
+	return s.Items[s.Index], nil
 }
 
 func (s *Stack) Pop() (int, error) {
 
-    if s.Empty() {
-        return 0, errors.New("Cannot pop from an empty stack!")
-    }
+	if s.Empty() {
+		return 0, errors.New("Cannot pop from an empty stack!")
+	}
 
-    s.Index -= 1
-    i := s.Items[s.Index]
-    s.Items[s.Index] = nil
-    return i, nil
+	s.Index -= 1
+	i := s.Items[s.Index]
+	s.Items = s.Items[:s.Index]
+	return i, nil
 }
 
-func (s *Stack) Push(i int) (error) {
+func (s *Stack) Push(i int) error {
 
-    if s.Full() {
-        errors.New("Cannot push into a full stack!")
-    }
+	if s.Full() {
+		errors.New("Cannot push into a full stack!")
+	}
 
-    s.Items = append(s.Items, i)
-    s.Index += 1
-    return nil
+	s.Items = append(s.Items, i)
+	s.Index += 1
+	return nil
 }
 
 func (s *Stack) Size() int {
-    return s.Index
+	return s.Index
 }
