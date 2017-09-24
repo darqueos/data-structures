@@ -1,3 +1,5 @@
+// 1.1.3
+
 internal class Stack<T>(length: Int) {
 
     private var items: Array<Any?>

@@ -1,3 +1,5 @@
+// 4.0
+
 internal final class Stack<T> {
 
     private var items: Array<Any?>
@@ -16,31 +18,31 @@ internal final class Stack<T> {
         return self.index == self.items.count
     }
 
-    internal fun peek(): T? {
-
-        guard !self.isEmpty() {
-            throw StackError.emptyStack("Cannot pop from an empty stack!")
-        }
-
-        return self.items[self.index - 1] as T?
-    }
-
-    internal fun pop(): T? {
+    internal func peek() throws -> T? {
 
         guard !self.isEmpty() else {
-            throw StackError.emptyStack("Cannot pop from an empty stack!")
+            throw StackError.emptyStack(reason: "Cannot pop from an empty stack!")
+        }
+
+        return self.items[self.index - 1] as? T
+    }
+
+    internal func pop() throws -> T? {
+
+        guard !self.isEmpty() else {
+            throw StackError.emptyStack(reason: "Cannot pop from an empty stack!")
         }
 
         self.index -= 1
         let item = self.items[self.index]
         self.items[self.index] = nil
-        return item as T?
+        return item as? T
     }
 
     internal func push(item: T?) throws -> Void {
 
         guard !self.isFull() else {
-            throw StackError.fullStack("Cannot push into a full stack!")
+            throw StackError.fullStack(reason: "Cannot push into a full stack!")
         }
 
         self.items[self.index] = item
@@ -53,7 +55,7 @@ internal final class Stack<T> {
 
 }
 
-enum StackError: Error {
-    case emptyStack
-    case fullStack
+internal enum StackError: Error {
+    case emptyStack(reason: String)
+    case fullStack(reason: String)
 }
