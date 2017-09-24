@@ -21,7 +21,7 @@ internal final class Stack<T> {
     internal func peek() throws -> T? {
 
         guard !self.isEmpty() else {
-            throw StackError.emptyStack(reason: "Cannot pop from an empty stack!")
+            throw StackError.emptyStack(reason: "Cannot peek at an empty stack!")
         }
 
         return self.items[self.index - 1] as? T
