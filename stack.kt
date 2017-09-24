@@ -1,10 +1,10 @@
-internal class Stack<T>(size: Int) {
+internal class Stack<T>(length: Int) {
 
     private var items: Array<Any?>
     private var index: Int
 
     internal init {
-        this.items = arrayOfNulls<Any?>(size)
+        this.items = arrayOfNulls<Any?>(length)
         this.index = 0
     }
 
@@ -32,7 +32,7 @@ internal class Stack<T>(size: Int) {
         }
 
         this.index -= 1
-        var item = this.items[this.index]
+        val item = this.items[this.index]
         this.items[this.index] = null
         return item as T?
     }
