@@ -2,11 +2,11 @@
 
 internal final class Stack<T> {
 
-  private var items: Array<Any?>
+  private var items: Array<T?>
   private var index: Int
 
   internal init(length: Int) {
-    self.items = [Any?](repeating: nil, count: length)
+    self.items = [T?](repeating: nil, count: length)
     self.index = 0
   }
 
@@ -24,7 +24,7 @@ internal final class Stack<T> {
       throw StackError.emptyStack(reason: "Cannot peek at an empty stack!")
     }
 
-    return self.items[self.index - 1] as? T
+    return self.items[self.index - 1]
   }
 
   internal func pop() throws -> T? {
@@ -36,7 +36,7 @@ internal final class Stack<T> {
     self.index -= 1
     let item = self.items[self.index]
     self.items[self.index] = nil
-    return item as? T
+    return item
   }
 
   internal func push(item: T?) throws -> Void {
