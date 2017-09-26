@@ -34,7 +34,7 @@ internal final class Stack<T> {
     }
 
     self.index -= 1
-    let item = self.items[self.index]
+    let item: T? = self.items[self.index]
     self.items[self.index] = nil
     return item
   }
