@@ -1,6 +1,7 @@
-import Foundation
+// 4.0
 
 internal final class Queue<T> {
+
     private var items: Array<T?>
     
     internal init() {
@@ -36,6 +37,14 @@ internal final class Queue<T> {
     internal func size() -> Int {
         return self.items.count
     }
+
+    self.items[self.index] = item
+    self.index += 1
+  }
+
+  internal func size() -> Int {
+    return self.index
+  }
 }
 
 internal enum QueueError: Error {
