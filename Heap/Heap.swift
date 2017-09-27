@@ -9,9 +9,9 @@ internal enum HeapType {
 internal class HeapTree <T: Comparable> {
     
     /// The array storing the Heap Tree
-    private var tree : [T]
+    private var tree: [T]
     /// Comparison closure defined through init
-    private let comparison : ((T,T)->Bool)
+    private let comparison: ((T,T)->Bool)
     
     // MARK: Tree's status
     
@@ -31,18 +31,13 @@ internal class HeapTree <T: Comparable> {
     }
     
     //MARK: - Initializers
-    //
+    
     /// Init
     ///
     /// - Parameter type: describes the relationship between parent and child
     init(type: HeapType = HeapType.maxHeap) {
         tree = []
-        switch type {
-        case .maxHeap:
-            self.comparison = (>)
-        case .minHeap:
-            self.comparison = (<)
-        }
+        self.comparison = HeapTree.comparison(for: type, dataType: T.self)
     }
     
     /// init
@@ -50,19 +45,14 @@ internal class HeapTree <T: Comparable> {
     /// - Parameters:
     ///   - array: an array containing all initial elements.
     /// - Parameter type: describes the relationship between parent and child
-    init(array:[T], type: HeapType = HeapType.maxHeap) {
+    init(array: [T], type: HeapType = HeapType.maxHeap) {
         tree = array
-        
-        switch type {
-        case .maxHeap:
-            self.comparison = (>)
-        case .minHeap:
-            self.comparison = (<)
-        }
+        self.comparison = HeapTree.comparison(for: type, dataType: T.self)
         
         buildHeap()
     }
     
+    /// MARK: - Convenience functions
     /// Print current tree
     func printTree() {
         self.tree.forEach {
@@ -85,15 +75,18 @@ extension HeapTree {
     ///
     /// - Parameter index: index of element.
     /// - Returns: return the removed element
-    func remove(elementAtIndex index:Int) -> T? {
-        guard index < self.tree.count && !self.isEmpty else { return nil }
+    func remove(elementAtIndex index: Int) -> T? {
+        guard index < self.count && !self.isEmpty else { return nil }
+        guard let lastElem = self.tree.last else { return nil }
         
         let ret = tree[index]
-        tree[index] = tree.last!
-        let _ = tree.popLast()!
+        tree[index] = lastElem
+        
+        let _ = tree.popLast()
         if index < self.count {
             heapifyDown(fromIndex: index)
         }
+        
         return ret
     }
 }
@@ -104,8 +97,8 @@ extension HeapTree {
     /// Normalize heap tree from bottom-up
     ///
     /// - Parameter startingIndex: index of the first element to be normalized.
-    private func heapifyUp(fromIndex startingIndex:Int) {
-        guard startingIndex > 0 else {return}
+    private func heapifyUp(fromIndex startingIndex: Int) {
+        guard startingIndex > 0 else { return }
         
         var i = startingIndex
         var parent = self.parent(ofIndex: i)
@@ -155,7 +148,7 @@ extension HeapTree {
     private func buildHeap() {
         guard self.count >= 0 else { return }
         
-        for i in stride(from: (self.count / 2) - 1, to: -1, by: -1) {
+        for i in stride(from: (self.count >> 1) - 1, to: -1, by: -1) {
             heapifyDown(fromIndex: i)
         }
     }
@@ -163,16 +156,29 @@ extension HeapTree {
 
 // MARK: Index access
 extension HeapTree {
-    private func parent(ofIndex i:Int) -> Int {
+    private func parent(ofIndex i: Int) -> Int {
         return Int(i - 1) >> 1
     }
     
-    private func leftChild(ofIndex i:Int) -> Int {
+    private func leftChild(ofIndex i: Int) -> Int {
         return (i << 1) | 1
     }
     
-    private func rightChild(ofIndex i:Int) -> Int {
+    private func rightChild(ofIndex i: Int) -> Int {
         return self.leftChild(ofIndex: i) + 1
     }
 }
+
+// MARK: Constructor Helpers
+extension HeapTree {
+    private static func comparison<T: Comparable>(for type: HeapType, dataType: T.Type) -> ((T,T) -> Bool) {
+        switch type {
+        case .maxHeap:
+            return (>)
+        case .minHeap:
+            return (<)
+        }
+    }
+}
+
 
