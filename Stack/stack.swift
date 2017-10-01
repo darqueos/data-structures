@@ -2,11 +2,15 @@
 
 internal final class Stack<T> {
 
+  internal var count: Int {
+    get { return self.index }
+  }
+
   private var items: Array<T?>
   private var index: Int
 
-  internal init(length: Int) {
-    self.items = [T?](repeating: nil, count: length)
+  internal init(count: Int) {
+    self.items = [T?](repeating: nil, count: count)
     self.index = 0
   }
 
@@ -47,10 +51,6 @@ internal final class Stack<T> {
 
     self.items[self.index] = item
     self.index += 1
-  }
-
-  internal func size() -> Int {
-    return self.index
   }
 
 }
