@@ -12,7 +12,7 @@ internal final class Queue<T> {
     self.items = [T?](repeating: nil, count: count)
     self.count = 0
     self.first = 0
-    self.last = length - 1
+    self.last = count - 1
   }
 
   internal func isEmpty() -> Bool {
