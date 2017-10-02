@@ -7,6 +7,10 @@ class Stack {
     this.index = 0;
   }
 
+  get length() {
+    return this.index;
+  }
+
   isEmpty() {
     return this.index === 0;
   }
@@ -31,7 +35,7 @@ class Stack {
     }
 
     this.index -= 1;
-    let item = this.items[this.index];
+    const item = this.items[this.index];
     this.items[this.index] = undefined;
     return item;
   }
@@ -44,10 +48,6 @@ class Stack {
 
     this.items[this.index] = item;
     this.index += 1;
-  }
-
-  size() {
-    return this.index;
   }
 
 }
