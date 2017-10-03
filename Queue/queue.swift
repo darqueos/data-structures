@@ -1,8 +1,14 @@
-// 4.0
-
 internal final class Queue<T> {
 
   internal var count: Int
+
+  internal var isEmpty: Bool {
+    get { return self.count == 0 }
+  }
+
+  internal var isFull: Bool {
+    get { return self.count == self.items.count }
+  }
 
   private var items: Array<T?>
   private var first: Int
@@ -10,22 +16,14 @@ internal final class Queue<T> {
 
   internal init(count: Int) {
     self.items = [T?](repeating: nil, count: count)
-    self.count = 0
+    self.last  = count - 1
     self.first = 0
-    self.last = count - 1
-  }
-
-  internal func isEmpty() -> Bool {
-    return self.count == 0
-  }
-
-  internal func isFull() -> Bool {
-    return self.count == self.items.count
+    self.count = 0
   }
 
   internal func peek() throws -> T? {
 
-    guard !self.isEmpty() else {
+    guard !self.isEmpty else {
       throw QueueError.emptyQueue(reason: "Cannot peek at an empty queue!")
     }
 
@@ -34,7 +32,7 @@ internal final class Queue<T> {
 
   internal func dequeue() throws -> T? {
 
-    guard !self.isEmpty() else {
+    guard !self.isEmpty else {
       throw QueueError.emptyQueue(reason: "Cannot dequeue from an empty queue!")
     }
 
@@ -47,7 +45,7 @@ internal final class Queue<T> {
 
   internal func enqueue(item: T?) throws -> Void {
 
-    guard !self.isFull() else {
+    guard !self.isFull else {
       throw QueueError.fullQueue(reason: "Cannot enqueue into a full queue!")
     }
 

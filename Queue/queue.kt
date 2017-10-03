@@ -1,5 +1,3 @@
-// 1.1.3
-
 internal class Queue<T>(size: Int) {
 
   internal val isEmpty: Boolean
@@ -17,9 +15,9 @@ internal class Queue<T>(size: Int) {
 
   internal init {
     this.items = arraOfNulls<Any?>(size)
-    this.size  = 0
-    this.first = 0
     this.last  = size - 1
+    this.first = 0
+    this.size  = 0
   }
 
   internal fun peek(): T? {

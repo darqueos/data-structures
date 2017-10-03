@@ -1,29 +1,27 @@
-// ES2015
-
 class Queue {
 
   constructor(length) {
     this.items  = new Array(length);
-    this.length = 0;
-    this.first  = 0;
     this.last   = length - 1;
+    this.first  = 0;
+    this.length = 0;
   }
 
   get length() {
     return this.length;
   }
 
-  isEmpty() {
+  get isEmpty() {
     return this.length === 0;
   }
 
-  isFull() {
+  get isFull() {
     return this.length === this.items.length;
   }
 
   peek() {
 
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       throw new RangeError("Cannot peek at an empty queue!");
     }
 
@@ -32,7 +30,7 @@ class Queue {
 
   dequeue() {
 
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       throw new RangeError("Cannot dequeue from an empty queue!");
     }
 
@@ -45,7 +43,7 @@ class Queue {
 
   enqueue(item) {
 
-    if (this.isFull()) {
+    if (this.isFull) {
       throw RangeError("Cannot enqueue into a full queue!");
     }
 
