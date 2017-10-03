@@ -11,17 +11,17 @@ class Stack {
     return this.index;
   }
 
-  isEmpty() {
+  get isEmpty() {
     return this.index === 0;
   }
 
-  isFull() {
+  get isFull() {
     return this.index === this.items.length;
   }
 
   peek() {
 
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       throw new RangeError("Cannot peek at an empty stack!");
     }
 
@@ -30,7 +30,7 @@ class Stack {
 
   pop() {
 
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       throw new RangeError("Cannot pop from an empty stack!");
     }
 
@@ -42,7 +42,7 @@ class Stack {
 
   push(item) {
 
-    if (this.isFull()) {
+    if (this.isFull) {
       throw new RangeError("Cannot push into a full stack!");
     }
 
