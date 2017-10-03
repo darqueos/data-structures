@@ -1,4 +1,3 @@
-// 1.1.3
 
 internal class Stack<T>(size: Int) {
 
