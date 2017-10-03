@@ -8,7 +8,7 @@ type Queue struct {
 }
 
 func NewQueue(l int) *Queue {
-	return &Queue{Items: make([]int, l, l*2), First: 0, Last: 0, Length: 0}
+	return &Queue{Items: make([]int, l), First: 0, Last: l - 1, Length: 0}
 }
 
 func (q *Queue) Len() int {
@@ -32,7 +32,7 @@ func (q *Queue) Peek() (int, error) {
 	return q.Items[q.First], nil
 }
 
-func (q *Queue) Dequeue() (int, error)) {
+func (q *Queue) Dequeue() (int, error) {
 
 	if q.Empty() {
 		return 0, errors.New("Cannot dequeue from an empty queue!")
@@ -52,7 +52,7 @@ func (q *Queue) Enqueue(i int) error {
 	}
 
 	q.Last = (q.Last + 1) % len(q.Items)
-	q.Items = append(q.Items, i)
+	q.Items[q.Last] = i
 	q.Length += 1
 	return nil
 }
