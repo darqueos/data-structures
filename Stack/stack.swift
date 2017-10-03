@@ -1,9 +1,16 @@
-// 4.0
 
 internal final class Stack<T> {
 
   internal var count: Int {
     get { return self.index }
+  }
+
+  internal var isEmpty: Bool {
+    get { return self.index == 0 }
+  }
+
+  internal var isFull: Bool {
+    get { return self.index == self.items.count }
   }
 
   private var items: Array<T?>
@@ -14,17 +21,9 @@ internal final class Stack<T> {
     self.index = 0
   }
 
-  internal func isEmpty() -> Bool {
-    return self.index == 0
-  }
-
-  internal func isFull() -> Bool {
-    return self.index == self.items.count
-  }
-
   internal func peek() throws -> T? {
 
-    guard !self.isEmpty() else {
+    guard !self.isEmpty else {
       throw StackError.emptyStack(reason: "Cannot peek at an empty stack!")
     }
 
@@ -33,7 +32,7 @@ internal final class Stack<T> {
 
   internal func pop() throws -> T? {
 
-    guard !self.isEmpty() else {
+    guard !self.isEmpty else {
       throw StackError.emptyStack(reason: "Cannot pop from an empty stack!")
     }
 
@@ -45,7 +44,7 @@ internal final class Stack<T> {
 
   internal func push(item: T?) throws -> Void {
 
-    guard !self.isFull() else {
+    guard !self.isFull else {
       throw StackError.fullStack(reason: "Cannot push into a full stack!")
     }
 
