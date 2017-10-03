@@ -1,4 +1,3 @@
-
 internal class Stack<T>(size: Int) {
 
   internal val isEmpty: Boolean

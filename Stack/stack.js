@@ -1,5 +1,3 @@
-// ES2015
-
 class Stack {
 
   constructor(length) {

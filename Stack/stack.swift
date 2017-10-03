@@ -1,4 +1,3 @@
-
 internal final class Stack<T> {
 
   internal var count: Int {
