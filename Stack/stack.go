@@ -1,4 +1,3 @@
-// 1.9
 
 package stack
 
@@ -53,6 +52,6 @@ func (s *Stack) Push(i int) error {
 	return nil
 }
 
-func (s *Stack) Size() int {
+func (s *Stack) Len() int {
 	return s.Index
 }
