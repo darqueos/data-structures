@@ -20,14 +20,14 @@ class Queue(object):
     def peek(self):
 
         if self.is_empty():
-            raise IndexError("Cannot peek at an empty queue.")
+            raise IndexError("Cannot peek at an empty queue!")
 
         return self._items[self._first]
 
     def dequeue(self):
 
         if self.is_empty():
-            raise IndexError("Cannot dequeue from an empty queue.")
+            raise IndexError("Cannot dequeue from an empty queue!")
 
         item = self._items[self._first]
         self._items[self._first] = None
@@ -38,7 +38,7 @@ class Queue(object):
     def enqueue(self, item):
 
         if self.is_full():
-            raise IndexError("Cannot enqueue into a full queue.")
+            raise IndexError("Cannot enqueue into a full queue!")
 
         self._last = (self._last + 1) % len(self._items)
         self._items[self._last] = item
