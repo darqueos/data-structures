@@ -76,4 +76,6 @@ $ java -jar <file>.jar
 
 > This Google creation caught the developer attention in the recent years after numerous impressive results in benchmarks. A really concise language, with its own linting built-in. As a practial example of application written on Go, you can check out Docker.
 
-Go is a weird language. Weird as in very different from your typical OOP language. All code written here in Go are basically useless, and function more as a boilerplate or template than code you can copy, paste and go. At the time of writing, Go latest stable version is `1.9`, which means it has [no generics implementation](https://github.com/golang/go/issues/15292).
+Go is a weird language. Weird as in *very different from your typical OOP language*. All Go code here is basically useless, and function more as a boilerplate or a template than some code you can copy, paste and go. At the time of writing, Go latest stable version is `1.9`. It has [no generics implementation](https://github.com/golang/go/issues/15292), which data structure code make heavy use of.
+
+Although you can't directly run files from a command line, you can try using any online Go REPL.
