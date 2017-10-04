@@ -1,22 +1,22 @@
 class Queue {
 
   constructor(length) {
-    this.items  = new Array(length);
-    this.last   = length - 1;
-    this.first  = 0;
-    this.length = 0;
+    this._items  = new Array(length);
+    this._last   = length - 1;
+    this._first  = 0;
+    this._length = 0;
   }
 
   get length() {
-    return this.length;
+    return this._length;
   }
 
   get isEmpty() {
-    return this.length === 0;
+    return this._length === 0;
   }
 
   get isFull() {
-    return this.length === this.items.length;
+    return this._length === this._items._length;
   }
 
   peek() {
@@ -25,7 +25,7 @@ class Queue {
       throw new RangeError("Cannot peek at an empty queue!");
     }
 
-    return this.items[this.first];
+    return this._items[this._first];
   }
 
   dequeue() {
@@ -34,10 +34,10 @@ class Queue {
       throw new RangeError("Cannot dequeue from an empty queue!");
     }
 
-    const item = this.items[this.first];
-    this.items[this.first] = undefined;
-    this.first = (this.first + 1) % this.items.length;
-    this.length -= 1;
+    const item = this._items[this._first];
+    this._items[this._first] = undefined;
+    this._first = (this._first + 1) % this._items._length;
+    this._length -= 1;
     return item;
   }
 
@@ -47,9 +47,9 @@ class Queue {
       throw RangeError("Cannot enqueue into a full queue!");
     }
 
-    this.last = (this.last + 1) % this.items.length;
-    this.items[this.last] = item;
-    this.length += 1;
+    this._last = (this._last + 1) % this._items._length;
+    this._items[this._last] = item;
+    this._length += 1;
   }
 
 }
