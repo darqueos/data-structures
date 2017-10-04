@@ -1,20 +1,20 @@
 internal class Queue<T>(size: Int) {
 
-  internal val isEmpty: Boolean
+  internal var size: Int
+    get() = this.size
+
+  internal var isEmpty: Boolean = true
     get() = this.size == 0
 
-  internal val isFull: Boolean
+  internal var isFull: Boolean = false
     get() = this.size == this.items.size
-
-  internal val size: Int
-    get() = this.size
 
   private var items: Array<Any?>
   private var first: Int
   private var last: Int
 
-  internal init {
-    this.items = arraOfNulls<Any?>(size)
+  init {
+    this.items = arrayOfNulls<Any?>(size)
     this.last  = size - 1
     this.first = 0
     this.size  = 0
@@ -26,7 +26,7 @@ internal class Queue<T>(size: Int) {
       throw Exception("Cannot peek at an empty queue!")
     }
 
-    return this.items[this.first]
+    return this.items[this.first] as T?
   }
 
   internal fun dequeue(): T? {
