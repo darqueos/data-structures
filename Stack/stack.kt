@@ -1,18 +1,18 @@
 internal class Stack<T>(size: Int) {
 
-  internal val isEmpty: Boolean
+  internal var size: Int
+    get() = this.index
+
+  internal var isEmpty: Boolean = true
     get() = this.index == 0
 
-  internal val isFull: Boolean
+  internal var isFull: Boolean = false
     get() = this.index == this.items.size
-
-  internal val size: Int
-    get() = this.index
 
   private var items: Array<Any?>
   private var index: Int
 
-  internal init {
+  init {
     this.items = arrayOfNulls<Any?>(size)
     this.index = 0
   }
