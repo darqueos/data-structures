@@ -1,6 +1,6 @@
 // 4.0
 
-// This implementantion depends on Binary Heap implimplementantion.
+// This implementantion depends on Binary Heap implementantion.
 // See ../Heap/Heap.swift for more info
 
 private struct QueueElement<T> {
