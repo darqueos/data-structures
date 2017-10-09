@@ -1,53 +1,51 @@
-// ES2015
-
 class Stack {
 
   constructor(length) {
-    this.items = new Array(length);
-    this.index = 0;
+    this._items = new Array(length);
+    this._index = 0;
   }
 
-  isEmpty() {
-    return this.index === 0;
+  get length() {
+    return this._index;
   }
 
-  isFull() {
-    return this.index === this.items.length;
+  get isEmpty() {
+    return this._index === 0;
+  }
+
+  get isFull() {
+    return this._index === this._items.length;
   }
 
   peek() {
 
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       throw new RangeError("Cannot peek at an empty stack!");
     }
 
-    return this.items[this.index - 1];
+    return this._items[this._index - 1];
   }
 
   pop() {
 
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       throw new RangeError("Cannot pop from an empty stack!");
     }
 
-    this.index -= 1;
-    let item = this.items[this.index];
-    this.items[this.index] = undefined;
+    this._index -= 1;
+    const item = this._items[this._index];
+    this._items[this._index] = undefined;
     return item;
   }
 
   push(item) {
 
-    if (this.isFull()) {
+    if (this.isFull) {
       throw new RangeError("Cannot push into a full stack!");
     }
 
-    this.items[this.index] = item;
-    this.index += 1;
-  }
-
-  size() {
-    return this.index;
+    this._items[this._index] = item;
+    this._index += 1;
   }
 
 }

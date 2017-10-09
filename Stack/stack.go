@@ -1,5 +1,3 @@
-// 1.9
-
 package stack
 
 import "errors"
@@ -11,6 +9,10 @@ type Stack struct {
 
 func NewStack(l int) *Stack {
 	return &Stack{Items: make([]int, l, l*2), Index: 0}
+}
+
+func (s *Stack) Len() int {
+	return s.Index
 }
 
 func (s *Stack) Empty() bool {
@@ -51,8 +53,4 @@ func (s *Stack) Push(i int) error {
 	s.Items = append(s.Items, i)
 	s.Index += 1
 	return nil
-}
-
-func (s *Stack) Size() int {
-	return s.Index
 }

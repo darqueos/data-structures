@@ -1,26 +1,25 @@
-// 1.1.3
+internal class Stack<T>(size: Int) {
 
-internal class Stack<T>(length: Int) {
+  internal var size: Int
+    get() = this.index
+
+  internal var isEmpty: Boolean = true
+    get() = this.index == 0
+
+  internal var isFull: Boolean = false
+    get() = this.index == this.items.size
 
   private var items: Array<Any?>
   private var index: Int
 
-  internal init {
-    this.items = arrayOfNulls<Any?>(length)
+  init {
+    this.items = arrayOfNulls<Any?>(size)
     this.index = 0
-  }
-
-  internal fun isEmpty(): Boolean {
-    return this.index == 0
-  }
-
-  internal fun isFull(): Boolean {
-    return this.index == this.items.size
   }
 
   internal fun peek(): T? {
 
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       throw Exception("Cannot peek at an empty stack!")
     }
 
@@ -29,7 +28,7 @@ internal class Stack<T>(length: Int) {
 
   internal fun pop(): T? {
 
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       throw Exception("Cannot pop from an empty stack!")
     }
 
@@ -41,16 +40,12 @@ internal class Stack<T>(length: Int) {
 
   internal fun push(item: T?): Unit {
 
-    if (this.isFull()) {
+    if (this.isFull) {
       throw Exception("Cannot push into a full stack!")
     }
 
     this.items[this.index] = item
     this.index += 1
-  }
-
-  internal fun size(): Int {
-    return this.index
   }
 
 }
