@@ -1,0 +1,27 @@
+{
+  "name": "javascript-data-structure",
+  "version": "0.0.1",
+  "description": "Commom data structures implemented in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darqueos/data-structures.git"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "data-structure"
+  ],
+  "author": "darqueos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darqueos/data-structures/issues"
+  },
+  "homepage": "https://github.com/darqueos/data-structures#readme",
+  "dependencies": {
+    "jest": "^21.2.1"
+  }
+}

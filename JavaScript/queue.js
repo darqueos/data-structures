@@ -35,6 +35,7 @@ class Queue {
     }
 
     const item = this._items[this._first];
+
     this._items[this._first] = undefined;
     this._first = (this._first + 1) % this._items._length;
     this._length -= 1;
@@ -47,9 +48,11 @@ class Queue {
       throw RangeError("Cannot enqueue into a full queue!");
     }
 
-    this._last = (this._last + 1) % this._items._length;
     this._items[this._last] = item;
+    this._last = (this._last + 1) % this._items._length;
     this._length += 1;
   }
 
 }
+
+module.exports = Queue;

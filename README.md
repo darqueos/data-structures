@@ -31,12 +31,22 @@ $ python <file>.py
 
 > A scripting language that has become the most popular tool for frontend development and since the release of Node.js, the backend too.
 
-You should be able to run any file from most browser's console or from the command line:
+#### Requirements 
+
+It's recommended to run it on Node version 8+.
+
+```bash
+$ nvm install v8.7.0
+````
 
 ```bash
 $ node -v
-v8.6.0
+v8.7.0
+```
 
+You should be able to run any file from most browser's console or from the command line:
+
+```bash
 $ node <file>.js
 ```
 
