@@ -24,7 +24,7 @@ Python 3.6.2
 Run any Python file with the command:
 
 ```bash
-$ python <file>.py
+$ python Python/<file>.py
 ```
 
 ### JavaScript
@@ -47,8 +47,20 @@ v8.7.0
 You should be able to run any file from most browser's console or from the command line:
 
 ```bash
-$ node <file>.js
+$ node JavaScript/<file>.js
 ```
+
+#### Testing 
+
+To test JavaScript files navigate to the corresponding folder and install the dependencies:
+```bash
+$ cd JavaScript && npm i
+```
+
+For testing we're using [Jest](https://facebook.github.io/jest/), simply run: 
+```bash
+$ npm test
+``` 
 
 ### Swift
 
@@ -60,7 +72,7 @@ Swift files can be run on macOS and Ubuntu command line:
 $ swift -v
 Apple Swift version 4.0
 
-$ swift <file>.swift
+$ swift Swift/<file>.swift
 ```
 
 ### Kotlin
@@ -73,13 +85,13 @@ Running Kotlin directly from the command line is a bit tricky, since you have to
 $ kotlinc -version
 info: kotlinc-jvm 1.1.51 (JRE 1.8.0_144-b01)
 
-$ kotlinc <file>.kt -include-runtime -d <file>.jar
+$ kotlinc Kotlin/<file>.kt -include-runtime -d Kotlin/<file>.jar
 ```
 
 This will generate a `.jar` file, which you can execute by typing:
 
 ```bash
-$ java -jar <file>.jar
+$ java -jar Kotlin/<file>.jar
 ```
 
 ### Go
