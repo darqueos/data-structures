@@ -1,1 +1,4 @@
 .DS_Store
+JavaScript/node_modules
+JavaScript/coverage
+Kotlin/*.jar
